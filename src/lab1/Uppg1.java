@@ -35,14 +35,14 @@ public class Uppg1 {
 	}
 	
 	public String toString(){ //Om man inte vill ha med sista kommatecknet??
-		String s=null;
+		StringBuilder s=new StringBuilder();
 		for(int i=0; i<listStrings.size();i++){ //Kan det vara bättre att skapa o jämf med en int = listStrings.get(0) för att det blir 'mindre'?
-			s=s+listStrings.get(i);
+			s.append(listStrings.get(i));
 			if (i!=listStrings.size()-1){		//Bättre med en hasNext()? Och hur gör man det isf?
-				s=s+",";
+				s.append(", ");
 			}
 		}
-		return "["+s+"]";
+		return "["+s.toString()+"]";
 	}
 	
 }
