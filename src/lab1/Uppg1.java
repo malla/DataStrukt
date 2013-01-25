@@ -6,11 +6,11 @@ public class Uppg1 {
 
 	ArrayList<String> listStrings;
 	
-	public void  Uppg(){
+	public Uppg1(){
 		listStrings=new ArrayList<String>(10);
 	}
 	
-	public void  Uppg(int i){
+	public Uppg1(int i){
 		listStrings=new ArrayList<String>(i);
 	}
 	
@@ -19,23 +19,30 @@ public class Uppg1 {
 	}
 	
 	public boolean empty(){
-		
-		return true;
+		return listStrings.isEmpty();
 	}
 	
 	public String getFirst(){
-		return "";
+		return listStrings.get(0);
 	}
 	
 	public void removeFirst(){
-		
+		listStrings.remove(0);
 	}
 	
 	public boolean existP(String elem){
-		return true;
+		return listStrings.contains(elem);
 	}
 	
-	public String toString(){
-		return "";
+	public String toString(){ //Om man inte vill ha med sista kommatecknet??
+		String s=null;
+		for(int i=0; i<listStrings.size();i++){ //Kan det vara bättre att skapa o jämf med en int = listStrings.get(0) för att det blir 'mindre'?
+			s=s+listStrings.get(i);
+			if (i!=listStrings.size()-1){		//Bättre med en hasNext()? Och hur gör man det isf?
+				s=s+",";
+			}
+		}
+		return "["+s+"]";
 	}
+	
 }
