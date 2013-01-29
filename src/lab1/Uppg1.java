@@ -18,6 +18,7 @@ public class Uppg1 {
 		listStrings.add(0, element);
 	}
 	
+	//Check if string array is empty
 	public boolean empty(){
 		return listStrings.isEmpty();
 	}
