@@ -92,9 +92,20 @@ public class Uppg1 {
 			position=tillf;
 	}
 
+
+	
+	public String get(int p){
+		return listStrings[(elemAmount-p)];//elementet p eller det 'efter'??
+	}
+	
+	void moveP (int val) {
+		position = position+(-val);	
+	}
+
 	private boolean hasNext(){
 		return 0<=position&& position<=elemAmount;
 	}
+
 
 	private void addAfterP(int index, String element){//Menas att sätta in på platsen P eller platsen efter?? SKa man ändra platsen på p?
 		if(index>=0){
@@ -115,4 +126,5 @@ public class Uppg1 {
 		System.arraycopy(listStrings, 0, newArray, 0, elemAmount-1);//Do something to move all the elements one step to the right
 		listStrings=newArray;
 	}
+
 }
