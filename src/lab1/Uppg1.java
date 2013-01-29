@@ -88,6 +88,14 @@ public class Uppg1 {
 		position=p;
 	}
 
+	
+	public String get(int p){
+		return listStrings[(elemAmount-p)];//elementet p eller det 'efter'??
+	}
+	
+	void moveP (int val) {
+		position = position+(-val);	
+	}
 //		private boolean hasNext(){
 //			if (0<=position)
 //		return true;
