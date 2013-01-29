@@ -87,26 +87,17 @@ public class Uppg1 {
 
 	public void setP (int p){//Behöver vi kolla om nya positionen är giltig?
 		int tillf= position;
-		position=p;
-		if(!hasNext())
+		position=elemAmount-p;
+		if(!hasNext()){
 			position=tillf;
-	}
-
-
-	
-	public String get(int p){
-		return listStrings[(elemAmount-p)];//elementet p eller det 'efter'??
+			//throw an exception 
+		}
 	}
 	
-	void moveP (int val) {
-		position = position+(-val);	
-	}
-
 	private boolean hasNext(){
 		return 0<=position&& position<=elemAmount;
 	}
-
-
+	
 	private void addAfterP(int index, String element){//Menas att sätta in på platsen P eller platsen efter?? SKa man ändra platsen på p?
 		if(index>=0){
 			if(elemAmount+1>limit){
@@ -119,6 +110,16 @@ public class Uppg1 {
 			elemAmount++;
 		}
 	}
+	
+	public String get(int p){
+		return listStrings[(elemAmount-p)];//elementet p eller det 'efter'??
+		//throw exception if p is not within the elements
+	}
+	
+	//We reuse the code in setP.
+	public void moveP(int val) {
+		setP(position+val);	
+	}
 
 	private void enlargeArray(){
 		limit=limit*2;
@@ -126,5 +127,4 @@ public class Uppg1 {
 		System.arraycopy(listStrings, 0, newArray, 0, elemAmount-1);//Do something to move all the elements one step to the right
 		listStrings=newArray;
 	}
-
 }
