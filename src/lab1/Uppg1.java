@@ -30,10 +30,11 @@ public class Uppg1 {
 	public void addFirst(String element){
 		elemAmount++;
 		if (elemAmount>limit){
-			limit=limit*2;
-			String[] newArray= new String[limit];
-			System.arraycopy(listStrings, 0, newArray, 0, elemAmount-1);//Do something to move all the elements one step to the right
-			listStrings=newArray;
+			enlargeArray();
+			//			limit=limit*2;
+			//			String[] newArray= new String[limit];
+			//			System.arraycopy(listStrings, 0, newArray, 0, elemAmount-1);//Do something to move all the elements one step to the right
+			//			listStrings=newArray;
 			listStrings[elemAmount-1]=element;
 		} else {
 			listStrings[elemAmount-1]=element;
@@ -84,11 +85,34 @@ public class Uppg1 {
 		return "["+s+"]";
 	}
 
-	public void setP (int p){
+	public void setP (int p){//Behöver vi kolla om nya positionen är giltig?
+		int tillf= position;
 		position=p;
+		if(!hasNext())
+			position=tillf;
 	}
 
 	private boolean hasNext(){
 		return 0<=position&& position<=elemAmount;
+	}
+
+	private void addAfterP(int index, String element){//Menas att sätta in på platsen P eller platsen efter?? SKa man ändra platsen på p?
+		if(index>=0){
+			if(elemAmount+1>limit){
+				enlargeArray();
+			}
+			for(int i=elemAmount; i>=elemAmount-index;i--){
+				listStrings[i+1]=listStrings[i];
+			}
+			listStrings[elemAmount-index]=element;	
+			elemAmount++;
+		}
+	}
+
+	private void enlargeArray(){
+		limit=limit*2;
+		String[] newArray= new String[limit];
+		System.arraycopy(listStrings, 0, newArray, 0, elemAmount-1);//Do something to move all the elements one step to the right
+		listStrings=newArray;
 	}
 }
