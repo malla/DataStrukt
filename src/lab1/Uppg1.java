@@ -22,7 +22,7 @@ public class Uppg1 {
 		limit=i;
 		position=0;
 	}
-	
+
 	// Vi har valt att öka listans storlek vid behov då vi ser detta 
 	// som en mer generell lösning. Givetvis kan det finnas tillfällen
 	// då det kan vara önskvärt att ha en begränsad liststorlek, men
@@ -75,7 +75,7 @@ public class Uppg1 {
 		StringBuilder s= new StringBuilder();
 		for(int i=(elemAmount-1); i>=0;i--){ 
 			s.append(listStrings[i]);
-			if (i!=0){		//Bättre med en hasNext()? Och hur gör man det isf?
+			if (i!=0){
 				s.append(", ");
 			}
 		}
@@ -86,8 +86,7 @@ public class Uppg1 {
 		position=p;
 	}
 
-//		private boolean hasNext(){
-//			if (0<=position)
-//		return true;
-//		}
+	private boolean hasNext(){
+		return 0<=position&& position<=elemAmount;
+	}
 }
