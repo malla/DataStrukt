@@ -70,33 +70,24 @@ public class Uppg1 {
 		}
 		return false;
 	}
-<<<<<<< HEAD
-	
-	public String toString(){ //Om man inte vill ha med sista kommatecknet??
-		StringBuilder s=new StringBuilder();
-		for(int i=0; i<listStrings.size();i++){ //Kan det vara bättre att skapa o jämf med en int = listStrings.get(0) för att det blir 'mindre'?
-			s.append(listStrings.get(i));
-			if (i!=listStrings.size()-1){		//Bättre med en hasNext()? Och hur gör man det isf?
-=======
 
 	public String toString(){ 
 		StringBuilder s= new StringBuilder();
 		for(int i=(elemAmount-1); i>=0;i--){ 
 			s.append(listStrings[i]);
 			if (i!=0){		//Bättre med en hasNext()? Och hur gör man det isf?
->>>>>>> Uppg1b
 				s.append(", ");
 			}
 		}
-		return "["+s.toString()+"]";
+		return "["+s+"]";
 	}
 
 	public void setP (int p){
 		position=p;
 	}
 
-		private boolean hasNext(){
-			if (0<=position)
-		return true;
-		}
+//		private boolean hasNext(){
+//			if (0<=position)
+//		return true;
+//		}
 }
