@@ -40,6 +40,8 @@ public class Uppg1 {
 		}
 	}
 
+	//Check if string array is empty
+
 	public boolean empty(){
 		for (int i=0; i<listStrings.length;i++){
 			if (listStrings[i]!=null)
