@@ -44,11 +44,12 @@ public class Uppg1 {
 	//Check if string array is empty
 
 	public boolean empty(){
-		for (int i=0; i<listStrings.length;i++){
-			if (listStrings[i]!=null)
-				return false;
-		}
-		return true;
+		return (elemAmount==0);
+//		for (int i=0; i<listStrings.length;i++){
+//			if (listStrings[i]!=null)
+//				return false;
+//		}
+//		return true;
 	}
 
 	public String getFirst(){
