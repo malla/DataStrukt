@@ -97,7 +97,12 @@ public class Uppg1 {
 	 * @return true if Array is empty.
 	 */
 	public boolean empty(){
-		return (elemAmount<1);
+		return (elemAmount==0);
+//		for (int i=0; i<listStrings.length;i++){
+//			if (listStrings[i]!=null)
+//				return false;
+//		}
+//		return true;
 	}
 
 	/**
