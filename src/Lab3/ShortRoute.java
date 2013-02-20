@@ -307,6 +307,7 @@ public class ShortRoute extends JFrame implements ActionListener {
 			//  Read in the lines and add to the graph
 			indata =  new Scanner(new File("lines.noBOM.txt"), "UTF-8");
 			grafen = new DirectedGraph<BusEdge>(noderna.noOfNodes());
+				
 			while ( indata.hasNext() ) {
 				String lineNo = indata.next();
 				int    antal  = indata.nextInt() -1;
