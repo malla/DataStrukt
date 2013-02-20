@@ -1,4 +1,4 @@
-package Lab3;
+package lab3;
 
 import java.awt.BasicStroke;
 import java.awt.Color;

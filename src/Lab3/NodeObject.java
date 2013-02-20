@@ -1,4 +1,4 @@
-package Lab3;
+package lab3;
 
 // @TODO getters istället för publikt?
   public class NodeObject  {
