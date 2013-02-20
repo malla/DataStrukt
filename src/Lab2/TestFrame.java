@@ -31,9 +31,9 @@ public class TestFrame extends JFrame implements ActionListener {
    
     CollectionWithGet<TestMapWithCounter.TestMapEntry<String,List<Integer>>>
 	containerSLC   =   new SortedLinkedCollection(),
-	containerBST   =   null,
-        containerAVL   =   null,
-        containerSplay =   null;
+	containerBST   =   new BSTwithGet(),
+        containerAVL   =   new AVLwithGet(),
+        containerSplay =   new SplayTree();
     
     /*    **************************************************  */   
 
