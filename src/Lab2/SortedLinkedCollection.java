@@ -1,12 +1,16 @@
+
 package Lab2;
 
 import java.util.Iterator;
-
 import datastructures.*;
 import testSortCol.*;
+import java.util.List;
+import testSortCol.CollectionWithGet;
+import testSortCol.TestMapWithCounter.TestMapEntry;
+
 
 public class SortedLinkedCollection<E extends Comparable<E>> extends
-		LinkedCollection<E> {
+		LinkedCollection<E> implements CollectionWithGet<E>{
 	private Entry lastElement;
 
 	/**
@@ -16,6 +20,7 @@ public class SortedLinkedCollection<E extends Comparable<E>> extends
 	public SortedLinkedCollection() {
 		super();
 	} // constructor SortedLinkedCollection
+
 
 	/**
 	 * Adds an element to the collection. The element added will be sorted into
