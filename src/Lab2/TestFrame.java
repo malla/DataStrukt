@@ -30,11 +30,12 @@ public class TestFrame extends JFrame implements ActionListener {
     /*  ***** Här skall ni definiera era samlingar !!!  ***** */   
    
     CollectionWithGet<TestMapWithCounter.TestMapEntry<String,List<Integer>>>
+
 	containerSLC   =   new SortedLinkedCollection(),
 	containerBST   =   new BSTwithGet(),
         containerAVL   =   new AVLwithGet(),
         containerSplay =   new SplayTree();
-    
+
     /*    **************************************************  */   
 
   TestMapWithCounter<String,List<Integer>> slcMap =
