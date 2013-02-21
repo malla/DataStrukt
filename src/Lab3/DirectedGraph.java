@@ -29,6 +29,8 @@ public class DirectedGraph<E extends Edge> {
 	}
 		
 	public Iterator<E> minimumSpanningTree() {//Bella
+		ArrayList[] cc = new ArrayList[nodes.length];
+		
 		return null;
 	}
 
