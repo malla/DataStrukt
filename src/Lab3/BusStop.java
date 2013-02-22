@@ -1,6 +1,5 @@
 package lab3;
 
-
 public class BusStop extends NodeObject {
 
   int xpos, ypos;
