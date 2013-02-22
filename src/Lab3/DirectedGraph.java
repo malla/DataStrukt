@@ -7,6 +7,7 @@ package lab3;
 
 import java.util.*;
 
+
 public class DirectedGraph<E extends Edge> {
 	private ArrayList<Integer>[] nodes;
 
@@ -46,6 +47,14 @@ public class DirectedGraph<E extends Edge> {
 	}
 
 	public Iterator<E> minimumSpanningTree() {//Bella
+		int nbrOfCc = nodes.length;
+		ArrayList[] cc = new ArrayList[nodes.length];
+		PriorityQueue pq = new PriorityQueue();
+		//pq.add(arg0);
+		while(nbrOfCc > 0){
+			nbrOfCc --;
+		}
+		
 		return null;
 	}
 

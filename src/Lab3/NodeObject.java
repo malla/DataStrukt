@@ -1,26 +1,35 @@
 package lab3;
+/**
+* A node object is used in the NodeTable class to map between 
+* nod number and node name.
+*/
+public class NodeObject  {
 
-// @TODO getters istället för publikt?
-  public class NodeObject  {
+	/** the number */
+	private int nodeNo;
 
-     public final String name;
-     private int nodeNo;
+	/** The  name.  */
+	public String name;
 
-     NodeObject(String name) { 
-        this.name = name.trim();
-     }
+
+	NodeObject(String newName) { 
+		name = newName.trim();
+	}
 
 	public int getNodeNo() {
 		return nodeNo;
 	}
-	
+
 	public void setNodeNo(int no) {
 		nodeNo = no;
 	}
-	
+
+	public String getName() {
+		return name;
+	}
 
 	public String toString() {
 		//return name + "," + nodeNo;
 		return name;
 	}
-  }
+}
