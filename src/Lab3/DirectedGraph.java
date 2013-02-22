@@ -9,7 +9,7 @@ import java.util.*;
 
 
 public class DirectedGraph<E extends Edge> {
-	private ArrayList<Integer>[] nodes;
+	private ArrayList<BusEdge>[] nodes;
 
 
 
@@ -21,9 +21,9 @@ public class DirectedGraph<E extends Edge> {
 
 	public void addEdge(E e) {
 		if (nodes[e.from]==null){
-			nodes[e.from]= new ArrayList<Integer>();
+			nodes[e.from]= new ArrayList<BusEdge>();
 		}
-		nodes[e.from].add(e.to);
+		nodes[e.from].add((BusEdge) e);
 	}
 
 	public Iterator<E> shortestPath(int from, int to) {//Malla
