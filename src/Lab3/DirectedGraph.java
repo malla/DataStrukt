@@ -50,7 +50,9 @@ public class DirectedGraph<E extends Edge> {
 		int nbrOfCc = nodes.length;
 		ArrayList[] cc = new ArrayList[nodes.length];
 		PriorityQueue pq = new PriorityQueue();
-		//pq.add(arg0);
+		while(pq.size() < nodes.length -1){
+			pq.add();
+		}
 		while(nbrOfCc > 0){
 			nbrOfCc --;
 		}

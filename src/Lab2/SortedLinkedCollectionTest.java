@@ -14,7 +14,7 @@ public class SortedLinkedCollectionTest extends TestCase {
 		assertTrue(SLC1.add("Hoho"));
 		assertTrue(SLC1.add("Extremt"));
 		assertTrue(SLC1.add("w"));
-		assertTrue(SLC1.add("Katastrofalt"));
+		assertTrue(SLC1.add("w"));
 		assertTrue(SLC2.add(1));
 		assertTrue(SLC2.add(5));
 		assertTrue(SLC2.add(3));
@@ -30,6 +30,7 @@ public class SortedLinkedCollectionTest extends TestCase {
 	@Test
 	public void testGet(){
 		SLC2.add(3);
+		SLC2.add(4);
 		SLC2.add(4);
 		assertTrue(SLC2.get(3)==3);
 		assertTrue(SLC2.get(4)==4);
