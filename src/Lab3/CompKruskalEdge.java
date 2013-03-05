@@ -6,7 +6,7 @@ public class CompKruskalEdge<E extends Edge> implements Comparable<CompKruskalEd
 
 	private E edge;	
 
-	public CompKruskalEdge(E e) {
+	protected CompKruskalEdge(E e) {
 		super();
 		this.edge = e;
 	}
@@ -27,18 +27,9 @@ public class CompKruskalEdge<E extends Edge> implements Comparable<CompKruskalEd
 		return this.edge;
 	}
 
-	public String toString() {
-		return this.edge.toString();
-	}
-
 	@Override
 	public int compareTo(CompKruskalEdge<E> otherEdge) {
-		if (this.getWeight() < otherEdge.getWeight()) {
-			return -1;
-		} else if (this.getWeight() == otherEdge.getWeight()) {
-			return 0;
-		} else {
-			return 1;
-		}
+		return (int) (getWeight() - otherEdge.getWeight());
+
 	}
 }
