@@ -59,7 +59,7 @@ public class SortedLinkedCollection<E extends Comparable<E>> extends
 		else {
 		// Loop through the other elements to see where the element fits.	
 			Entry tempEntry = head;
-			if(previousEntry.element.compareTo(newElement)< 0){
+			if(previousEntry.element.compareTo(newElement) < 0){
 				tempEntry = previousEntry;
 			}
 			while (tempEntry.next != null
