@@ -36,29 +36,115 @@ public class DirectedGraph<E extends Edge> {
 	}
 
 	public Iterator<E> shortestPath(int from, int to) {// Malla
-		ArrayList<Integer> vMinusS = new ArrayList<Integer>(); // Alla noder som
-																// ej beräknats
-																// ifrån.
-		int lowest = 0;
-		for (int i = 0; i > nodes.length; i++) {
-			vMinusS.add(i, i);
+		// ArrayList<Integer> vMinusS= new ArrayList<Integer>(); //Alla noder
+		// som ej
+		// beräknats ifrån.
+		// for (int i=0;i>nodes.length;i++){
+		// vMinusS.add(i, i);
+		// }
+		// ArrayList<Integer> s= new ArrayList<Integer>(); //Alla noder som har
+		// beräknats
+		PriorityQueue<ComparableDjikstraPath> results = new PriorityQueue<ComparableDjikstraPath>();
+		int node = from;
+		double cost = 0;
+		LinkedList<Integer> path = new LinkedList<Integer>();
+		results.add(new ComparableDjikstraPath(node, cost, path));
+		ArrayList<Integer> visitedNodes = new ArrayList<Integer>();
+		while (!results.isEmpty()) {
+			ComparableDjikstraPath djikstra = results.remove();
+			node = djikstra.to;
+			if (!visitedNodes.contains(node)) {
+				if (node == to) {
+					/**
+					 * return en iterator hur man kom till node.
+					 */
+				}
+			}
+			visitedNodes.add(node);
+			for (int i = 0; i < nodes[node].size(); i++) {
+				int tempToNode = nodes[node].get(i).to;
+				double weight = nodes[node].get(i).getWeight();
+				LinkedList<Integer> tempPath = djikstra.path;
+				tempPath.add(node);
+				results.add(new ComparableDjikstraPath(tempToNode, weight,
+						tempPath));
+			}
 		}
-		ArrayList<Integer> s = new ArrayList<Integer>(); // Alla noder som har
-															// beräknats
-		ArrayList<Integer> d = new ArrayList<Integer>(); // kortaste vägen till
-															// noden än så länge
-															// (vikten)
-		ArrayList<Integer> v = new ArrayList<Integer>(); // Noden som man
-															// kortast kommer
-															// dit ifrån.
-
-		// Vi börjar kolla...
-		int fromNode = from;
-		while (fromNode != to) {
-
-		}
-
+		// //Vi börjar kolla...
+		// while(fromNode!=to){
+		// vMinusS.set(fromNode, null);
+		// s.set(fromNode, fromNode);
+		// for(int i=0; i<nodes[fromNode].size();i++){
+		// double weight=nodes[fromNode].get(i).getWeight();
+		// int toNode=nodes[fromNode].get(i).to;
+		// d.set(toNode, weight);
+		// v.set(toNode, fromNode);
+		// if (weight)
+		// }
+		// }
 		return null;
+	}
+
+	public class ComparableDjikstraPath implements Comparable {
+		private int to;
+		private double cost;
+		private LinkedList<Integer> path;
+
+		public ComparableDjikstraPath(int to, double cost,
+				LinkedList<Integer> path) {
+			this.to = to;
+			this.cost = cost;
+			this.path = path;
+		}
+
+		public class CompKruskalEdge<E extends Edge> implements
+				Comparable<CompKruskalEdge<E>> {
+
+			private E edge;
+
+			protected CompKruskalEdge(E e) {
+				super();
+				this.edge = e;
+			}
+
+			public double getWeight() {
+				return this.edge.getWeight();
+			}
+
+			public int getFrom() {
+				return this.edge.from;
+			}
+
+			public int getTo() {
+				return this.edge.to;
+			}
+
+			public E getEdge() {
+				return this.edge;
+			}
+
+			@Override
+			public int compareTo(CompKruskalEdge<E> otherEdge) {
+				return (int) (getWeight() - otherEdge.getWeight());
+
+			}
+		}
+
+		@Override
+		public int compareTo(Object comp) throws NullPointerException {
+			if (null == comp) {
+				throw new NullPointerException();
+			} else if (comp.getClass().isInstance(this.getClass())) {
+				throw new IllegalArgumentException();
+			}
+			ComparableDjikstraPath compareTo = (ComparableDjikstraPath) comp;
+			if (this.cost == compareTo.cost) {
+				return 0;
+			} else if (this.cost > compareTo.cost) {
+				return 1;
+			} else
+				return -1;
+		}
 	}
 
 	/**
@@ -83,7 +169,7 @@ public class DirectedGraph<E extends Edge> {
 				pq.add(new CompKruskalEdge<E>(edge));
 			}
 		}
-		
+
 		int longest;
 		int shortest;
 
@@ -118,7 +204,8 @@ public class DirectedGraph<E extends Edge> {
 
 					cc[shortest] = cc[longest];
 
-					// Return the iterator if the number of elements it is containing is
+					// Return the iterator if the number of elements it is
+					// containing is
 					// the number of nodes minus one.
 					if (cc[longest].size() == (numberOfNodes - 1)) {
 						return cc[longest].iterator();
