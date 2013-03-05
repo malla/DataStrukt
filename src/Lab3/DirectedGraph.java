@@ -3,6 +3,11 @@
  * 
  * Ska man skapa en tvåriktad väg melan noderna?
  */
+
+//Grupp 26
+//Madeleine Appert 891110-4845
+//Isabelle Frölich 900831-2846
+
 package lab3;
 
 import java.util.*;
@@ -13,22 +18,22 @@ public class DirectedGraph<E extends Edge> {
 	private int numberOfNodes;
 	private List<E>[] edges;
 
-
-	@SuppressWarnings("unchecked")
 	public DirectedGraph(int noOfNodes) {
-		nodes=new ArrayList[noOfNodes];
+		nodes = new ArrayList[noOfNodes];
+		edges = (List<E>[]) new LinkedList[noOfNodes];
 		numberOfNodes = noOfNodes;
-		for (int i = noOfNodes; i > 0; i--) {
+		for (int i = 0; i < noOfNodes; i++) {
 			edges[i] = new LinkedList<E>();
 		}
 		
 	}
 
 	public void addEdge(E e) {
-		if (nodes[e.from]==null){
-			nodes[e.from]= new ArrayList<BusEdge>();
-		}
-		nodes[e.from].add((BusEdge) e);
+//		if (nodes[e.from]==null){
+//			nodes[e.from]= new ArrayList<BusEdge>();
+//		}
+//		nodes[e.from].add((BusEdge) e);
+		edges[e.from].add(e);
 	}
 
 	public Iterator<E> shortestPath(int from, int to) {//Malla
@@ -50,29 +55,42 @@ public class DirectedGraph<E extends Edge> {
 		
 		return null;
 	}
-
+	
+	/**
+	 * Uses Kruskals algorithm to find the minimum spanning tree given a number of nodes,
+	 * this without creating any loops.
+	 * 
+	 * @Return Returns an iterator over the minimum spanning tree
+	 */
+	
 	public Iterator<E> minimumSpanningTree() {//Bella
 		List<E>[] cc = (List<E>[]) new LinkedList[this.numberOfNodes];
 		PriorityQueue<CompKruskalEdge> pq = new PriorityQueue<CompKruskalEdge>();
-		for(int i = 0; i < numberOfNodes; i ++){
-			for (E Edge : this.edges[i]) {
-				pq.add(new CompKruskalEdge<E>(Edge));
+		//All edges are added into a priorityqueue 
+		for (List<E> edgeList : this.edges) {
+			for (E edge : edgeList) {
+				pq.add(new CompKruskalEdge<E>(edge));
 			}
 		}
+
+		//Add a list to each node in the array
 		for (int i = 0; i < numberOfNodes; i++) {
 			cc[i] = new LinkedList<E>();
-		}
-		
+		}		
 		
 		int longest; 
 		int shortest; 
+		
+		//As long as there are elements left in the priorityqueue, continue
 		while(!pq.isEmpty()){
 			CompKruskalEdge<E> tempEdge = pq.poll();
 			
+			//Checks so that it doesn't point to the same element
 			if(cc[tempEdge.getTo()] != cc[tempEdge.getFrom()]) {
-				
+				//Checks so that the list doesn't already contain the element
 				if (!(cc[tempEdge.getFrom()].contains(tempEdge) && cc[tempEdge.getTo()]
 						.contains(tempEdge))) {
+					//Sets the shortest and the longest edge
 					if (cc[tempEdge.getFrom()].size() >= cc[tempEdge.getTo()].size()) {
 						longest = tempEdge.getFrom();
 						shortest = tempEdge.getTo();
@@ -80,6 +98,8 @@ public class DirectedGraph<E extends Edge> {
 						longest = tempEdge.getTo();
 						shortest = tempEdge.getFrom();
 					}	
+					
+					//Transfer the elements and refer the nodes in cc to the refreshed list
 					for (E edge : cc[shortest]) {
 						cc[longest].add(edge); 
 						cc[edge.to] = cc[longest];
@@ -100,4 +120,3 @@ public class DirectedGraph<E extends Edge> {
 	}
 
 }
-

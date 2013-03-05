@@ -1,6 +1,7 @@
 package lab3;
 
-public class CompKruskalEdge<E extends Edge> implements Comparable<E> {
+
+public class CompKruskalEdge<E extends Edge> implements Comparable<CompKruskalEdge<E>> {
 	
 
 	private E edge;	
@@ -31,7 +32,7 @@ public class CompKruskalEdge<E extends Edge> implements Comparable<E> {
 	}
 
 	@Override
-	public int compareTo(E otherEdge) {
+	public int compareTo(CompKruskalEdge<E> otherEdge) {
 		if (this.getWeight() < otherEdge.getWeight()) {
 			return -1;
 		} else if (this.getWeight() == otherEdge.getWeight()) {
