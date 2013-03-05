@@ -3,7 +3,7 @@ package lab3;
 public class CompKruskalEdge<E extends Edge> implements Comparable<E> {
 	
 
-	private E edge;	
+	public E edge;	
 
 	public CompKruskalEdge(E e) {
 		super();

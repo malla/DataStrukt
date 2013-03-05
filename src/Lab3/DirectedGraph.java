@@ -52,8 +52,7 @@ public class DirectedGraph<E extends Edge> {
 	}
 
 	public Iterator<E> minimumSpanningTree() {//Bella
-		List cc[] = new List[numberOfNodes];
-		edges = new List[numberOfNodes];
+		List<E>[] cc = (List<E>[]) new LinkedList[this.numberOfNodes];
 		PriorityQueue<CompKruskalEdge> pq = new PriorityQueue<CompKruskalEdge>();
 		for(int i = 0; i < numberOfNodes; i ++){
 			for (E Edge : this.edges[i]) {
@@ -64,12 +63,40 @@ public class DirectedGraph<E extends Edge> {
 			cc[i] = new LinkedList<E>();
 		}
 		
+		
+		int longest; 
+		int shortest; 
 		while(!pq.isEmpty()){
 			CompKruskalEdge<E> tempEdge = pq.poll();
 			
+			if(cc[tempEdge.getTo()] != cc[tempEdge.getFrom()]) {
+				
+				if (!(cc[tempEdge.edge.from].contains(tempEdge.edge) && cc[tempEdge.edge.to]
+						.contains(tempEdge.edge))) {
+					if (cc[tempEdge.edge.from].size() >= cc[tempEdge.edge.to].size()) {
+						longest = tempEdge.getFrom();
+						shortest = tempEdge.getTo();
+					} else {
+						longest = tempEdge.getTo();
+						shortest = tempEdge.getFrom();
+					}	
+					for (E edge : cc[shortest]) {
+						cc[longest].add(edge); 
+						cc[edge.to] = cc[longest];
+						cc[edge.from] = cc[longest];
+					}
+					
+					cc[longest].add(tempEdge.edge);
+					
+					cc[shortest] = cc[longest];
+					
+					if (cc[longest].size() == (cc.length - 1)) {
+						return cc[longest].iterator();
+					}
+				}
+			}
 		}
-		
-		return null;
+		return null;	
 	}
 
 }
