@@ -1,9 +1,16 @@
 package lab3;
 
+//Grupp 26
+//Madeleine Appert 891110-4845
+//Isabelle Frölich 900831-2846
 
+/**
+ * CompKruskalEdge can compare different edges, get their To, From and weight.
+ * 
+ * @param <E> 
+ */
 public class CompKruskalEdge<E extends Edge> implements Comparable<CompKruskalEdge<E>> {
 	
-
 	private E edge;	
 
 	protected CompKruskalEdge(E e) {
