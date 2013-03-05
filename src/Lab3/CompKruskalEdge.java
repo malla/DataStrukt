@@ -1,15 +1,44 @@
 package lab3;
 
-public class CompKruskalEdge<E> extends BusEdge implements Comparable<E> {
+public class CompKruskalEdge<E extends Edge> implements Comparable<E> {
+	
 
-	CompKruskalEdge(int from, int to, double weight, String line) {
-		super(from, to, weight, line);
+	private E edge;	
+
+	public CompKruskalEdge(E e) {
+		super();
+		this.edge = e;
+	}
+
+	public double getWeight() {
+		return this.edge.getWeight();
+	}
+
+
+	public int getFrom() {
+		return this.edge.from;
+	}
+
+	public int getTo() {
+		return this.edge.to;
+	}
+
+	public E getEdge() {
+		return this.edge;
+	}
+
+	public String toString() {
+		return this.edge.toString();
 	}
 
 	@Override
-	public int compareTo(E e) {
-		
-		return 0;
+	public int compareTo(E otherEdge) {
+		if (this.getWeight() < otherEdge.getWeight()) {
+			return -1;
+		} else if (this.getWeight() == otherEdge.getWeight()) {
+			return 0;
+		} else {
+			return 1;
+		}
 	}
-
 }

@@ -10,13 +10,18 @@ import java.util.*;
 
 public class DirectedGraph<E extends Edge> {
 	private ArrayList<BusEdge>[] nodes;
-
+	private int numberOfNodes;
+	private List<E>[] edges;
 
 
 	@SuppressWarnings("unchecked")
 	public DirectedGraph(int noOfNodes) {
 		nodes=new ArrayList[noOfNodes];
-		;
+		numberOfNodes = noOfNodes;
+		for (int i = noOfNodes; i > 0; i--) {
+			edges[i] = new LinkedList<E>();
+		}
+		
 	}
 
 	public void addEdge(E e) {
@@ -47,14 +52,21 @@ public class DirectedGraph<E extends Edge> {
 	}
 
 	public Iterator<E> minimumSpanningTree() {//Bella
-		int nbrOfCc = nodes.length;
-		ArrayList[] cc = new ArrayList[nodes.length];
-		PriorityQueue pq = new PriorityQueue();
-		while(pq.size() < nodes.length -1){
-			pq.add();
+		List cc[] = new List[numberOfNodes];
+		edges = new List[numberOfNodes];
+		PriorityQueue<CompKruskalEdge> pq = new PriorityQueue<CompKruskalEdge>();
+		for(int i = 0; i < numberOfNodes; i ++){
+			for (E Edge : this.edges[i]) {
+				pq.add(new CompKruskalEdge<E>(Edge));
+			}
 		}
-		while(nbrOfCc > 0){
-			nbrOfCc --;
+		for (int i = 0; i < numberOfNodes; i++) {
+			cc[i] = new LinkedList<E>();
+		}
+		
+		while(!pq.isEmpty()){
+			CompKruskalEdge<E> tempEdge = pq.poll();
+			
 		}
 		
 		return null;
