@@ -71,9 +71,9 @@ public class DirectedGraph<E extends Edge> {
 			
 			if(cc[tempEdge.getTo()] != cc[tempEdge.getFrom()]) {
 				
-				if (!(cc[tempEdge.edge.from].contains(tempEdge.edge) && cc[tempEdge.edge.to]
-						.contains(tempEdge.edge))) {
-					if (cc[tempEdge.edge.from].size() >= cc[tempEdge.edge.to].size()) {
+				if (!(cc[tempEdge.getFrom()].contains(tempEdge) && cc[tempEdge.getTo()]
+						.contains(tempEdge))) {
+					if (cc[tempEdge.getFrom()].size() >= cc[tempEdge.getTo()].size()) {
 						longest = tempEdge.getFrom();
 						shortest = tempEdge.getTo();
 					} else {
@@ -86,7 +86,7 @@ public class DirectedGraph<E extends Edge> {
 						cc[edge.from] = cc[longest];
 					}
 					
-					cc[longest].add(tempEdge.edge);
+					cc[longest].add(tempEdge.getEdge());
 					
 					cc[shortest] = cc[longest];
 					

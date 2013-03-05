@@ -3,7 +3,7 @@ package lab3;
 public class CompKruskalEdge<E extends Edge> implements Comparable<E> {
 	
 
-	public E edge;	
+	private E edge;	
 
 	public CompKruskalEdge(E e) {
 		super();
@@ -13,7 +13,6 @@ public class CompKruskalEdge<E extends Edge> implements Comparable<E> {
 	public double getWeight() {
 		return this.edge.getWeight();
 	}
-
 
 	public int getFrom() {
 		return this.edge.from;
